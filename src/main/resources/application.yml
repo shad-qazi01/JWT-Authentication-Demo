@@ -1,5 +1,5 @@
 
-#spring:
+spring:
 #  datasource:
 #    url: jdbc:postgresql://localhost:5432/Application
 #    username: postgres
@@ -32,6 +32,8 @@
           auth: true
           starttls:
             enable: true
+
+#--------
 
 app:
   jwt:

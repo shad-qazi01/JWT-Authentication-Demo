@@ -2,15 +2,17 @@ package com.smartbiz.security;
 
 import com.smartbiz.user.UserEntity;
 import com.smartbiz.user.UserRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class AppUserDetailsService implements UserDetailsService {
-    private final UserRepository userRepo;
+
+    @Autowired(required = false)
+    private UserRepository userRepo;
 
     @Override
     public UserEntity loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -4,6 +4,7 @@ import com.smartbiz.invoice.InvoiceEntity;
 import com.smartbiz.invoice.InvoiceRepository;
 import com.smartbiz.user.UserEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
@@ -16,11 +17,13 @@ import java.io.IOException;
 import java.io.StringReader;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class InvoicePdfService {
 
-    private final InvoiceRepository invoiceRepo;
-    private final PdfService pdfService;
+    @Autowired(required = false)
+    private InvoiceRepository invoiceRepo;
+    @Autowired(required = false)
+    private PdfService pdfService;
 
     public byte[] generate(Long invoiceId, UserEntity user) {
 

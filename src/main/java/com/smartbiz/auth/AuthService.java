@@ -7,7 +7,7 @@ import com.smartbiz.security.JwtService;
 import com.smartbiz.user.Role;
 import com.smartbiz.user.UserEntity;
 import com.smartbiz.user.UserRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,13 +16,18 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class AuthService {
 
-    private final UserRepository userRepo;
-    private final JwtService jwtService;
-    private final PasswordEncoder encoder;
-    private final AuthenticationManager authManager;
+    @Autowired(required = false)
+    private UserRepository userRepo;
+    //    private final UserRepository userRepo;
+    @Autowired(required = false)
+    private JwtService jwtService;
+    @Autowired(required = false)
+    private PasswordEncoder encoder;
+    @Autowired(required = false)
+    private AuthenticationManager authManager;
 
     public void register(RegisterRequest registerReq) {
         if (userRepo.existsByEmail(registerReq.email()))

@@ -5,16 +5,19 @@ import com.smartbiz.invoice.dto.InvoiceRequest;
 import com.smartbiz.invoice.dto.InvoiceResponse;
 import com.smartbiz.user.UserEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class InvoiceService {
 
-    private final InvoiceRepository invoiceRepo;
-    private final ClientRepository clientRepo;
+    @Autowired(required = false)
+    private InvoiceRepository invoiceRepo;
+    @Autowired(required = false)
+    private ClientRepository clientRepo;
 
     public InvoiceResponse create(InvoiceRequest req, UserEntity user) {
 
